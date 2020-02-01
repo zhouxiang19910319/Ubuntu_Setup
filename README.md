@@ -40,6 +40,41 @@
 - [ ]Roboto Mono Font Install
 
 
+#### OBS
+```
+sudo apt-get install ffmpeg
+
+sudo add-apt-repository ppa:obsproject/obs-studio
+sudo apt-get update
+sudo apt-get install obs-studio
+```
+
+#### Papirus Icon Pack
+```
+sudo add-apt-repository ppa:papirus/papirus
+sudo apt-get update
+sudo apt-get install papirus-icon-theme
+```
+#### Matiera_Theme
+```
+https://github.com/nana-4/materia-theme
+
+
+
+
+sudo apt install gnome-themes-standard gtk2-engines-murrine libglib2.0-dev libxml2-utils
+sudo apt install materia-gtk-theme
+
+
+```
+
+#### Firefox Developer Edition
+```
+https://medium.com/@js_debugger/how-to-install-firefox-developer-edition-on-ubuntu-1c7f5f2b6883
+```
+
+
+
 #### Install Brave
 ```
 sudo apt install apt-transport-https curl
@@ -61,7 +96,25 @@ sudo apt update
 sudo apt install ubuntu-communitheme-session
 ```
 
+#### Typora
 
+```
+# or run:
+# sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys BA300B7755AFCFAE
+wget -qO - https://typora.io/linux/public-key.asc | sudo apt-key add -
+# add Typora's repository
+sudo add-apt-repository 'deb https://typora.io/linux ./'
+sudo apt-get update
+# install typora
+sudo apt-get install typora
+```
+
+
+#### Joplin 
+```
+wget -O - https://raw.githubusercontent.com/laurent22/joplin/master/Joplin_install_and_update.sh | bash
+
+```
 
 
 #### Neofetch cos duh
@@ -109,6 +162,11 @@ sudo apt-get install handbrake-cli
 ```
 
 
+#### PPA Purge
+```
+sudo apt-get install ppa-purge
+
+```
 
 
 #### Polo File Manager
