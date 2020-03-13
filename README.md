@@ -1,350 +1,343 @@
-# My Ubuntu Setup for Lenovo Thinkpad E495
+# Xubuntu Setup (Lenovo E495)
 
+## System Setup
 
-## TO-DO LIST
-1. how to uninstall gnome shell extension
-  * uninstall all the weather app
-2. ~~install caffenie~~
-3. ~~**Later do this snap store thing,focus on make a back up of all linux system first**~~
-4. How to create my own GTK theme
+* Change the server to main server instead of China
 
+* Update the repositories and installed apps
 
-#### Keyboard Shortcuts
-* Use Ctrl+alt+T to open terminal
-* Super+L or Ctrl+Alt+L: Locks the screen
-* Super+D or Ctrl+Alt+D: Show desktop
-* Super+A: Shows the application menu
-* Alt+F2: Run console
-
-* In Terminal: 
-* To cut Ctrl + Shift + X.
-* To copy Ctrl + Shift + C.
-* To paste Ctrl + Shift + V.
-
-* sudo apt-get autoremove
-* To restart sudo restart
-* To shut down sudo halt
-
-
-
-
-## App Waiting for install
-
-- [x]Rambox (uses too much system resources)
-- [x]Stacer
-- [x]Caffienie
-- [x]Timeshift
-- [x]Polo File Manager *tried this, too buggy and slow for my system*
-- [x]Oh My Zsh
-- [ ]How to customize Oh My Zsh to match the monokai theme
-- [ ]Roboto Mono Font Install
-
-
-#### OBS
+``` bash
+sudo apt update && sudo apt upgrade
 ```
-sudo apt-get install ffmpeg
 
-sudo add-apt-repository ppa:obsproject/obs-studio
+* Curl
+
+```bash
+sudo apt install curl
+```
+
+* Prepare your system for installing from source
+
+```bash
+# https://www.makeuseof.com/tag/compile-install-tar-gz-tar-bz2-files-ubuntu-linux/
+
+sudo apt-get install build-essential checkinstall
+
+sudo apt-get install subversion git-core mercurial
+
+# Install autoconf
+sudo apt-get install autoconf
+
+# Put all of the source code folder inside here : /usr/local/src
+
+# Create this directory
+sudo chown $USER /usr/local/src
+
+# Gave it write access
+sudo chmod u+rwx /usr/local/src
+
+# Install apt-file for dependency issues
+sudo apt-get install apt-file
+
+# Update apt-file
+sudo apt-file update
+
+# Move your tar.gz / tar.bz2 filr to here : /usr/local/src
+sudo mv <YOUR_TAR.GZ_FILE_NAME> <DESTINATION_FOLDER_PATH>
+
+# cd into the local src folder
+cd /usr/local/src
+
+# extract the source file
+tar -xzvf <filename>.tar.gz
+# OR
+tar -xjvf <filename>.tar.bz2
+
+# Read the README file or INSTALL file
+
+# cd into your software's folder
+cd /usr/local/src/<extracted folder>
+
+# Note: If your software does not have a configure file, you might want to try skipping straight to the Build & Install section of this article, though consult your INSTALL or README documentation first.
+
+# Type in this command
+make
+
+# Now you can install the program with the following command:
+
+sudo checkinstall
+
+# If everything went well you’ll see Installation Successful.
+# Your software should now be installed to
+# /usr/local/bin
+```
+
+* imwheel
+
+```bash
+sudo apt install imwheel
+
+# then need to place the imwheel rc file into home directory
+```
+
+* speedTest CLI
+
+```bash
+sudo apt-get install gnupg1 apt-transport-https dirmngr
+export INSTALL_KEY=379CE192D401AB61
+# Ubuntu versions supported: xenial, bionic
+# Debian versions supported: jessie, stretch, buster
+export DEB_DISTRO=$(lsb_release -sc)
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys $INSTALL_KEY
+echo "deb https://ookla.bintray.com/debian ${DEB_DISTRO} main" | sudo tee  /etc/apt/sources.list.d/speedtest.list
 sudo apt-get update
-sudo apt-get install obs-studio
+# Other non-official binaries will conflict with Speedtest CLI
+# Example how to remove using apt-get
+# sudo apt-get remove speedtest-cli
+sudo apt-get install speedtest
 ```
 
-#### Papirus Icon Pack
-```
-sudo add-apt-repository ppa:papirus/papirus
-sudo apt-get update
-sudo apt-get install papirus-icon-theme
-```
-#### Matiera_Theme
-```
-https://github.com/nana-4/materia-theme
+* exFat Support
 
-
-
-
-sudo apt install gnome-themes-standard gtk2-engines-murrine libglib2.0-dev libxml2-utils
-sudo apt install materia-gtk-theme
-
-
-```
-
-#### Firefox Developer Edition
-```
-https://medium.com/@js_debugger/how-to-install-firefox-developer-edition-on-ubuntu-1c7f5f2b6883
-```
-
-
-
-#### Install Brave
-```
-sudo apt install apt-transport-https curl
-
-curl -s https://brave-browser-apt-release.s3.brave.com/brave-core.asc | sudo apt-key --keyring /etc/apt/trusted.gpg.d/brave-browser-release.gpg add -
-
-echo "deb [arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main" | sudo tee /etc/apt/sources.list.d/brave-browser-release.list
-
+``` bash
+sudo add-apt-repository universe
 sudo apt update
-
-sudo apt install brave-browser
+sudo apt install exfat-fuse exfat-utils
 ```
 
-#### Install Yaru Theme
-```
-sudo snap install communitheme
-sudo add-apt-repository ppa:communitheme/ppa
-sudo apt update
-sudo apt install ubuntu-communitheme-session
-```
+* Stacer
 
-#### Typora
-
-```
-# or run:
-# sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys BA300B7755AFCFAE
-wget -qO - https://typora.io/linux/public-key.asc | sudo apt-key add -
-# add Typora's repository
-sudo add-apt-repository 'deb https://typora.io/linux ./'
-sudo apt-get update
-# install typora
-sudo apt-get install typora
-```
-
-
-#### Joplin 
-```
-wget -O - https://raw.githubusercontent.com/laurent22/joplin/master/Joplin_install_and_update.sh | bash
-
-```
-
-
-#### Neofetch cos duh
-```
-sudo apt install neofetch
-```
-
-#### Setup FLAK
-```
-sudo apt install flatpak
-sudo apt install gnome-software-plugin-flatpak
-flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-
-```
-
-#### Install TLP for laptop's battery management
-```
-sudo apt install tlp tlp-rdw
-sudo tlp start
-
-```
-
-
-#### Oh My Zsh
-```
-
-install ZSH 1st
-
-sudo apt install zsh
-
-install oh my zsh
-
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
-```
-
-
-#### Handbreak
-```
-sudo add-apt-repository ppa:stebbins/handbrake-releases
-sudo apt-get update
-
-sudo apt-get install handbrake-gtk
-sudo apt-get install handbrake-cli
-```
-
-
-#### PPA Purge
-```
-sudo apt-get install ppa-purge
-
-```
-
-
-#### Polo File Manager
-
-*Polo is too slow/buggy for my machine again.*
-
-```
-sudo apt-add-repository -y ppa:teejee2008/ppa
-sudo apt-get update
-sudo apt-get install polo-file-manager
-
-sudo apt-get remove polo-file-manager
-```
-
-#### Nemo File Manager
-```
-sudo apt install nemo
-
-```
-
-
-
-
-#### Install exFAT forma support
-```
-sudo apt-get install exfat-fuse exfat-utils
-```
-
-
-#### Polybar
-```
-```
-
-#### cURL
-
-```
-sudo apt-get update
-sudo apt-get install curl
-curl --version
-```
-
-#### Timeshift
-```
-sudo add-apt-repository -y ppa:teejee2008/ppa
-sudo apt-get update
-sudo apt-get install timeshift
-
-uninstall: 
-sudo apt-get remove timeshift
-
-**Remember to delete all snapshots before un-installing. Otherwise the snapshots continue to occupy space on your system. To delete all snapshots, run the application, select all snapshots from the list (CTRL+A) and click the Delete button on the toolbar. This will delete all snapshots and remove the /timeshift folder in the root directory.**
-
-**Check the GRUB version of your system before you use this. It only supports GRUB 2.**
-```
-
-#### Homebrew
-
-```
-sudo apt-get install build-essential curl file git
-
-
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
-
-```
-
-  * add Homebrew to your PATH
-
- * ==> Next steps:
-- Install the Homebrew dependencies if you have sudo access:
-  Debian, Ubuntu, etc.
-    sudo apt-get install build-essential
-  Fedora, Red Hat, CentOS, etc.
-    sudo yum groupinstall 'Development Tools'
-  See https://docs.brew.sh/linux for more information.
-- Configure Homebrew in your ~/.profile by running
-    echo 'eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)' >>~/.profile
-- Add Homebrew to your PATH
-    eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-- We recommend that you install GCC by running:
-    brew install gcc
-- Run `brew help` to get started
-- Further documentation: 
-    https://docs.brew.sh
-
-
-```
-test -d ~/.linuxbrew && eval $(~/.linuxbrew/bin/brew shellenv)
-test -d /home/linuxbrew/.linuxbrew && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-test -r ~/.bash_profile && echo "eval \$($(brew --prefix)/bin/brew shellenv)" >>~/.bash_profile
-echo "eval \$($(brew --prefix)/bin/brew shellenv)" >>~/.profile
-```
-
-```
-brew install gcc
-```
-
-```
-sudo apt-get install build-essential curl file git
-
-```
-
-#### Snapstore
-*My machine does not like this app.*
-
-install the app:
-
-```
-sudo snap install snap-store
-```
-
-errors I get:
-
-> Unable to download updates:failed to download https://odrs.gnome.org/1.0/reviews/api/
-  ratings: cannot resolve hostname
-
-
-#### Caffieine
-
-install the app
-
-```
-sudo add-apt-repository ppa:caffeine-developers/ppa
-
-sudo apt-get update
-
-sudo apt-get install caffeine
-```
-
-#### Gnome Weather
-
-
-install the app:
-
-`
-sudo apt install gnome-weather
-`
-
-uninstall the app:
-
-`
-sudo apt-get remove --auto-remove gnome-weather
-`
-
-delete local config files:
-
-`
-sudo apt-get remove --auto-remove gnome-weather
-`
-
-
-#### Monokai Entended Theme
-
-
-#### Colors
-
-Palette      | Hex Code
--------------|-------------------------------------------------------------------
-Background   | ![#272822](https://placehold.it/16/272822/000000?text=+) `#272822`
-Foreground   | ![#F8F8F2](https://placehold.it/16/F8F8F2/000000?text=+) `#F8F8F2`
-Comment      | ![#75715E](https://placehold.it/16/75715E/000000?text=+) `#75715E`
-Red          | ![#F92672](https://placehold.it/16/F92672/000000?text=+) `#F92672`
-Orange       | ![#FD971F](https://placehold.it/16/FD971F/000000?text=+) `#FD971F`
-Light Orange | ![#E69F66](https://placehold.it/16/E69F66/000000?text=+) `#E69F66`
-Yellow       | ![#E6DB74](https://placehold.it/16/E6DB74/000000?text=+) `#E6DB74`
-Green        | ![#A6E22E](https://placehold.it/16/A6E22E/000000?text=+) `#A6E22E`
-Blue         | ![#66D9EF](https://placehold.it/16/66D9EF/000000?text=+) `#66D9EF`
-Purple       | ![#AE81FF](https://placehold.it/16/AE81FF/000000?text=+) `#AE81FF`
-
-
-
-#### Stacer
-
-*Required Packages : curl, systemd*
-
-```
+```bash
 sudo add-apt-repository ppa:oguzhaninan/stacer -y
-
 sudo apt-get update
-
 sudo apt-get install stacer -y
 ```
+
+* Nordic GTK Theme and Icon Theme
+
+```bash
+# Get Nordic theme here : https://www.xfce-look.org/p/1267246/
+# Put it inside : usr/share/themes/
+
+# Get Nordic Folder Icons at the same address
+# Place Folder : Nordic and Nordic-Dark into usr/share/icons
+```
+
+* Nethog for real time network speed monitoring.
+
+``` bash
+sudo apt install nethogs
+sudo nethogs
+```
+
+* Nemo File Manager
+
+```bash
+sudo apt install nemo
+
+# then go into system settings set it as default file manager
+```
+
+* Install TLP for laptop's battery management
+
+```bash
+sudo apt install tlp tlp-rdw
+sudo tlp start
+```
+
+* VLC
+
+```bash
+sudo snap install vlc
+```
+
+* Etcher , live USB creating tool
+
+```bash
+# https://www.balena.io/etcher/
+
+# ???
+```
+
+* ExpressVPN , Google Chrome Browser ,
+
+```bash
+# Proprietary software, check the `Proprietary APP` download folder in chrome to install.
+```
+
+* Firefox China (how to install pre-compiled app)
+
+```bash
+# Download from here: https://www.firefox.com.cn/
+
+# extract the content inside the tar.bz2 file
+
+# 
+
+```
+
+## Development Setup
+
+* Terminal
+
+```bash
+# enable XFCE4 terminal drop down mode
+xfce4-terminal --drop-down
+
+# set up shortcut for drop down terminal
+# Settings =>  Keyboard => Application Shortcut => Add Command => Set Shortcut
+# mine is SUPER + T
+
+
+# install zsh
+sudo apt install zsh
+# set zsh as default shell
+sudo chsh
+# then enter this :
+/usr/bin/zsh
+# when prompted initial set up, choose 0, which is create an empty zshrc file
+
+# install oh-my-zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+# after this your default shell should be on-my-zsh already 
+
+# customize oh-my-zsh
+# https://www.youtube.com/watch?v=csJV1exZAjA&t=143s => Level Up Tutorial
+# https://github.com/ohmyzsh/ohmyzsh/wiki/Customization => Oh My Zsh official page
+
+# my zshrc file 
+```
+
+* Git
+
+```bash
+sudo apt update && sudo apt upgrade
+sudo apt install git
+```
+
+* Docker
+
+**Remember to disable VPN when installing Docker**
+
+```bash
+# Linux Installation Guide
+# https://docs.docker.com/install/linux/docker-ce/ubuntu/
+
+
+# Step 1:SET UP THE REPOSITORY
+
+# 1.
+sudo apt-get update
+
+# 2. Allow apt to use repo over HTTPS
+sudo apt-get install \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    gnupg-agent \
+    software-properties-common
+
+# 3. Add Docker Offical's GPG Key
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+
+# 4. Verify that you now have the key with the fingerprint 9DC8 5822 9FC7 DD38 854A E2D8 8D81 803C 0EBF CD88, by searching for the last 8 characters of the fingerprint.
+sudo apt-key fingerprint 0EBFCD88
+
+# 5. Setting Up Stable Repository
+sudo add-apt-repository \
+   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+   $(lsb_release -cs) \
+   stable"
+
+# Step 2:INSTALL DOCKER ENGINE - COMMUNITY
+
+# 1.
+sudo apt-get update
+
+# 2.
+sudo apt-get install docker-ce docker-ce-cli containerd.io
+```
+
+```bash
+# Docker Post Installation Guide For linux
+# https://docs.docker.com/install/linux/docker-ce/ubuntu/
+```
+
+```bash
+# My Setup and the error I got : 
+
+# Status: Downloaded newer image for aspendigital/octobercms:latest
+# AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.17.0.2. Set the 'ServerName' directive globally to suppress this message
+# AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.17.0.2. Set the 'ServerName' directive globally to suppress this message
+# [Thu Mar 05 07:18:09.000370 2020] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.38 (Debian) PHP/7.2.27 configured -- resuming normal operations
+# [Thu Mar 05 07:18:09.000792 2020] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+# ^C[Thu Mar 05 07:29:27.747115 2020] [mpm_prefork:notice] [pid 1] AH00169: caught SIGTERM, shutting down
+
+docker run -it -p 80:80 --name october aspendigital/octobercms:latest
+
+# I can get it to run, but I am not able to locate the local folder.
+```
+
+* VS Codium (it doesn't really matter what you use, this or VS code)
+
+```bash
+wget -qO - https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg | sudo apt-key add -
+
+echo 'deb https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/repos/debs/ vscodium main' | sudo tee --append /etc/apt/sources.list.d/vscodium.list
+
+sudo apt update && sudo apt install codium
+```
+
+```bash
+# install VS Codium extensions
+
+codium --install-extension 2gua.rainbow-brackets
+codium --install-extension abusaidm.html-snippets
+codium --install-extension alefragnani.project-manager
+codium --install-extension be5invis.vscode-custom-css
+codium --install-extension brpaz.file-templates
+codium --install-extension CoenraadS.bracket-pair-colorizer
+codium --install-extension DavidAnson.vscode-markdownlint
+codium --install-extension dbaeumer.vscode-eslint
+codium --install-extension donjayamanne.githistory
+codium --install-extension dzannotti.vscode-babel-coloring
+codium --install-extension ecmel.vscode-html-css
+codium --install-extension EditorConfig.EditorConfig
+codium --install-extension EQuimper.react-native-react-redux
+codium --install-extension formulahendry.auto-close-tag
+codium --install-extension formulahendry.auto-rename-tag
+codium --install-extension formulahendry.code-runner
+codium --install-extension gamunu.vscode-yarn
+codium --install-extension hnw.vscode-auto-open-markdown-preview
+codium --install-extension HookyQR.beautify
+codium --install-extension jpoissonnier.vscode-styled-components
+codium --install-extension leizongmin.node-module-intellisense
+codium --install-extension leveluptutorials.theme-levelup
+codium --install-extension ms-vscode.csharp
+codium --install-extension msjsdiag.debugger-for-chrome
+codium --install-extension naumovs.color-highlight
+codium --install-extension oderwat.indent-rainbow
+codium --install-extension PKief.material-icon-theme
+codium --install-extension ritwickdey.LiveServer
+codium --install-extension Shan.code-settings-sync
+codium --install-extension SmukkeKim.theme-setimonokai
+codium --install-extension streetsidesoftware.code-spell-checker
+codium --install-extension WallabyJs.quokka-vscode
+codium --install-extension whizkydee.material-palenight-theme
+codium --install-extension whtouche.vscode-js-console-utils
+codium --install-extension xabikos.JavaScriptSnippets
+codium --install-extension zhuangtongfa.Material-theme
+codium --install-extension ms-azuretools.vscode-docker
+```
+
+* Node JS
+
+```bash
+# I am using NodeJS version 12.x
+# Follow instructions from here : https://github.com/nodesource/distributions/blob/master/README.md#debinstall
+
+# Using Ubuntu
+curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+sudo apt-get install -y nodejs
+```
+
