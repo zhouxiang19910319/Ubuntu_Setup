@@ -16,6 +16,12 @@ sudo apt update && sudo apt upgrade
 sudo apt install curl
 ```
 
+* Compton
+
+```bash
+
+```
+
 * Prepare your system for installing from source
 
 ```bash
@@ -26,7 +32,7 @@ sudo apt-get install build-essential checkinstall
 sudo apt-get install subversion git-core mercurial
 
 # Install autoconf
-sudo apt-get install autoconf
+sudo apt-get install autoconfs
 
 # Put all of the source code folder inside here : /usr/local/src
 
@@ -121,13 +127,6 @@ sudo apt-get install stacer -y
 
 # Get Nordic Folder Icons at the same address
 # Place Folder : Nordic and Nordic-Dark into usr/share/icons
-```
-
-* Nethog for real time network speed monitoring.
-
-``` bash
-sudo apt install nethogs
-sudo nethogs
 ```
 
 * Nemo File Manager
@@ -278,7 +277,7 @@ docker run -it -p 80:80 --name october aspendigital/octobercms:latest
 # I can get it to run, but I am not able to locate the local folder.
 ```
 
-* VS Codium (it doesn't really matter what you use, this or VS code)
+* VS Codium (it doesn't really matter what you use, this or VS code , I switch between this randomly..) OR VS Code
 
 ```bash
 wget -qO - https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg | sudo apt-key add -
@@ -289,45 +288,46 @@ sudo apt update && sudo apt install codium
 ```
 
 ```bash
-# install VS Codium extensions
+sudo snap install --classic code
+```
 
-codium --install-extension 2gua.rainbow-brackets
-codium --install-extension abusaidm.html-snippets
-codium --install-extension alefragnani.project-manager
-codium --install-extension be5invis.vscode-custom-css
-codium --install-extension brpaz.file-templates
-codium --install-extension CoenraadS.bracket-pair-colorizer
-codium --install-extension DavidAnson.vscode-markdownlint
-codium --install-extension dbaeumer.vscode-eslint
-codium --install-extension donjayamanne.githistory
-codium --install-extension dzannotti.vscode-babel-coloring
-codium --install-extension ecmel.vscode-html-css
-codium --install-extension EditorConfig.EditorConfig
-codium --install-extension EQuimper.react-native-react-redux
-codium --install-extension formulahendry.auto-close-tag
-codium --install-extension formulahendry.auto-rename-tag
-codium --install-extension formulahendry.code-runner
-codium --install-extension gamunu.vscode-yarn
-codium --install-extension hnw.vscode-auto-open-markdown-preview
-codium --install-extension HookyQR.beautify
-codium --install-extension jpoissonnier.vscode-styled-components
-codium --install-extension leizongmin.node-module-intellisense
-codium --install-extension leveluptutorials.theme-levelup
-codium --install-extension ms-vscode.csharp
-codium --install-extension msjsdiag.debugger-for-chrome
-codium --install-extension naumovs.color-highlight
-codium --install-extension oderwat.indent-rainbow
-codium --install-extension PKief.material-icon-theme
-codium --install-extension ritwickdey.LiveServer
-codium --install-extension Shan.code-settings-sync
-codium --install-extension SmukkeKim.theme-setimonokai
-codium --install-extension streetsidesoftware.code-spell-checker
-codium --install-extension WallabyJs.quokka-vscode
-codium --install-extension whizkydee.material-palenight-theme
-codium --install-extension whtouche.vscode-js-console-utils
-codium --install-extension xabikos.JavaScriptSnippets
-codium --install-extension zhuangtongfa.Material-theme
-codium --install-extension ms-azuretools.vscode-docker
+```bash
+# install VS Code extensions
+
+code --install-extension 2gua.rainbow-brackets
+code --install-extension abusaidm.html-snippets
+code --install-extension alefragnani.project-manager
+code --install-extension be5invis.vscode-custom-css
+code --install-extension brpaz.file-templates
+code --install-extension CoenraadS.bracket-pair-colorizer
+code --install-extension DavidAnson.vscode-markdownlint
+code --install-extension dbaeumer.vscode-eslint
+code --install-extension donjayamanne.githistory
+code --install-extension dzannotti.vscode-babel-coloring
+code --install-extension ecmel.vscode-html-css
+code --install-extension EditorConfig.EditorConfig
+code --install-extension EQuimper.react-native-react-redux
+code --install-extension formulahendry.auto-close-tag
+code --install-extension formulahendry.auto-rename-tag
+code --install-extension formulahendry.code-runner
+code --install-extension gamunu.vscode-yarn
+code --install-extension hnw.vscode-auto-open-markdown-preview
+code --install-extension HookyQR.beautify
+code --install-extension jpoissonnier.vscode-styled-components
+code --install-extension leizongmin.node-module-intellisense
+code --install-extension msjsdiag.debugger-for-chrome
+code --install-extension naumovs.color-highlight
+code --install-extension oderwat.indent-rainbow
+code --install-extension PKief.material-icon-theme
+code --install-extension ritwickdey.LiveServer
+code --install-extension Shan.code-settings-sync
+code --install-extension SmukkeKim.theme-setimonokai
+code --install-extension streetsidesoftware.code-spell-checker
+code --install-extension WallabyJs.quokka-vscode
+code --install-extension whtouche.vscode-js-console-utils
+code --install-extension xabikos.JavaScriptSnippets
+code --install-extension ms-azuretools.vscode-docker
+code --install-extension lkytal.FlatUI
 ```
 
 * Node JS
