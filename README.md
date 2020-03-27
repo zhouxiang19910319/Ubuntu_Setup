@@ -10,10 +10,30 @@
 sudo apt update && sudo apt upgrade
 ```
 
+* Chinese Input
+
+```bash
+# Fcitx is the package related to input method.
+# https://wiki.archlinux.org/index.php/fcitx#Installation
+```
+
 * Curl
 
 ```bash
 sudo apt install curl
+```
+
+* Homebrew
+
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+```
+
+* ytop
+
+```bash
+brew tap cjbassi/ytop
+brew install ytop
 ```
 
 * Compton
@@ -150,6 +170,14 @@ sudo tlp start
 sudo snap install vlc
 ```
 
+* Gimp
+
+```bash
+sudo add-apt-repository ppa:otto-kesselgulasch/gimp
+sudo apt update
+sudo apt install gimp
+```
+
 * Etcher , live USB creating tool
 
 ```bash
@@ -280,6 +308,9 @@ docker run -it -p 80:80 --name october aspendigital/octobercms:latest
 * VS Codium (it doesn't really matter what you use, this or VS code , I switch between this randomly..) OR VS Code
 
 ```bash
+
+# This is VSCodium
+
 wget -qO - https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg | sudo apt-key add -
 
 echo 'deb https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/repos/debs/ vscodium main' | sudo tee --append /etc/apt/sources.list.d/vscodium.list
@@ -292,6 +323,8 @@ sudo snap install --classic code
 ```
 
 ```bash
+code --list-extensions
+
 # install VS Code extensions
 
 code --install-extension 2gua.rainbow-brackets
@@ -328,6 +361,9 @@ code --install-extension whtouche.vscode-js-console-utils
 code --install-extension xabikos.JavaScriptSnippets
 code --install-extension ms-azuretools.vscode-docker
 code --install-extension lkytal.FlatUI
+code --install-extension octref.vetur
+code --install-extension christian-kohler.npm-intellisense
+code --install-extension eg2.vscode-npm-script
 ```
 
 * Node JS
@@ -341,3 +377,11 @@ curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
 sudo apt-get install -y nodejs
 ```
 
+* Postman
+
+```bash
+# this is the official page
+# https://www.postman.com/downloads/
+
+sudo snap install postman
+```
