@@ -1,4 +1,4 @@
-# Xubuntu Setup (Lenovo E495)
+# ubuntu Setup 20.04 for right now
 
 ## System Setup
 
@@ -111,11 +111,20 @@ sudo apt install speedtest-cli
 - Nordic GTK Theme and Icon Theme
 
 ```bash
-# Get Nordic theme here : https://www.xfce-look.org/p/1267246/
+# Get Nordic theme here :
+https://www.xfce-look.org/p/1267246/
 # Put it inside : usr/share/themes/
 
 # Get Nordic Folder Icons at the same address
 # Place Folder : Nordic and Nordic-Dark into usr/share/icons
+```
+
+- Vimix GTK Theme + Icon Theme
+
+```bash
+https://github.com/vinceliuice/vimix-gtk-themes
+https://github.com/vinceliuice/vimix-icon-theme
+https://vinceliuice.github.io/theme-vimix.html
 ```
 
 - Nemo File Manager
